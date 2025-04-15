@@ -2,8 +2,8 @@
 Is = 1e-12;    % 反向飽和電流 (A)
 n = 1.5;       % 理想因子
 V_T = 25.85e-3; % 熱電壓 (V)
-R = 100;       % 電阻 (Ω)
-L = 1e-2;     % 電感 (H)
+R = 300;       % 電阻 (Ω)
+L = 1e-2;     % 電感 (H) 
 C = 1e-6;      % 電容 (F)
 
 % 時間設定
@@ -16,7 +16,7 @@ time = linspace(0, T, N); % 時間軸
 Vs = 0.4;      % 直流電壓源
 I = zeros(1, N);  % 電流 I
 Vd = zeros(1, N); % 二極體電壓 V_D
-Ic = zeros(1, N);
+Ic = zeros(1, N); 
 
 
 for k = 1:N-1
@@ -24,7 +24,7 @@ for k = 1:N-1
     dI_dt = (Vs - I(k)*R - Vd(k)) / L; % 電流變化率
     dVd_dt = (I(k) - Id) / C; % 二極體電壓變化率
     Ic(k) = I(k)-Id;
-
+    
     I(k+1) = I(k) + dI_dt * dt;
     Vd(k+1) = Vd(k) + dVd_dt * dt;
 end
